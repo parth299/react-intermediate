@@ -17,9 +17,9 @@ function App() {
   }  
 
   const deleteTodo = (id) => {
-    // todos.filter((todo) => (
-
-    // ))
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    console.log(newTodos);
+    setTodos(newTodos);
   }
 
   const toggleComplete = () => {
@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(todos);
+    // console.log(todos);
   }, [todos])
   
 
@@ -37,7 +37,7 @@ function App() {
       <TodoCreator />
       <h3 className="text-blue-300 text-center mt-10 font-bold ">Karmas :</h3>
       {todos.map((todo) => (
-        <Todos name={todo.todo} key={todo.id} />
+        <Todos id={todo.id} name={todo.todo} key={todo.id} />
       ))}
 
     </TodoContextProvider>

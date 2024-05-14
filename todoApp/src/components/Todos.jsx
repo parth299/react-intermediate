@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useTodo } from '../context';
 
-function Todos({name}) {
+function Todos({name, id}) {
 
   const [todo, setTodo] = useState("");
   const [toggle, setToggle] = useState(true);
   const [isEdit, setEdit] = useState(false);
-  const [id, setId] = useState("");
+  const [todoId, setTodoId] = useState("");
 
   const {deleteTodo} = useTodo();
-  const handleDelete = (e) => {
-    e.preventDefault();
+  const handleDelete = () => {
+    deleteTodo(todoId);
   }
   
   useEffect(() => {
     setTodo(name);
+    setTodoId(id);
   }, [name])
   
 
